@@ -1,25 +1,45 @@
 var startBtn = document.getElementById('startbutton');
 var timerEl =document.getElementById('timer');
-var divEl = document.getElementById('demo');
+var divEl = document.getElementById('myDiv');
+var sectionEl =document.getElementById('mySection');
+var questionEl=document.getElementById('question');
+var answer1Btn=document.getElementById('answer1');
+var answer2Btn= document.getElementById('answer2');
+var answer3Btn=document.getElementById('answer3');
+var answer4Btn= document.getElementById('answer4');
+
 
 
 function countDownTimer()
 {
-    divEl.textContent= readQuestions();;
+    
+    readQuestions();;
     var timerCount =75; 
     var Readtimer=setInterval(startTimer,1000);
-
+    
     function startTimer()
     {
-       
+      
         if(timerCount >= 0)
          {
-
-          timerEl.textContent = "Time:" +timerCount;
           timerCount--;
+          timerEl.textContent = "Time:" +timerCount;
+          if(sectionEl.style.display ==="none")
+          {
+            
+            divEl.style.display="block";
+            sectionEl.style.display="none";
+          }
+          else
+          {
+            
+            sectionEl.style.display="block";
+            divEl.style.display="none";
+          }
           
           
         }
+       
         if (timerCount == 0) {
           
           timerEl.textContent = "Time:0" +0;
@@ -31,15 +51,18 @@ function countDownTimer()
     }
 } 
 
+
+  
+
 startBtn.addEventListener('click',countDownTimer);
  
   
  function readQuestions()
     {
-    
+       
        var myQuestions = [
         {
-          question: "1.What is the syntax for creating a function in JavaScript named as Geekfunc?",
+          question: "What is the syntax for creating a function in JavaScript named as Geekfunc?",
           answers: {
             1 : "function = Geekfunc()",
             2 : "function Geekfunc()",
@@ -89,8 +112,10 @@ startBtn.addEventListener('click',countDownTimer);
     
     if(i<=myQuestions.length)
     {
-        console.log("Questions[0]" +myQuestions[0]);
-      demo.innerHTML= myQuestions[i];
+      
+      sectionEl.innerHTML= (myQuestions[i].question);
+      
+      
       i++;
     }
     

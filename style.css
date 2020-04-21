@@ -2,3 +2,12 @@ h2,p,button
 {
     text-align: center;
 }
+
+#mySection
+{
+    display: none;
+}
+#myDiv
+{
+    display: block;
+}
