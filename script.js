@@ -1,4 +1,4 @@
-var startBtn = document.getElementById('startbutton');
+var startBtn = document.getElementById('startButton');
 var timerEl =document.getElementById('timer');
 var divEl = document.getElementById('myDiv');
 var sectionEl =document.getElementById('mySection');
@@ -113,9 +113,7 @@ startBtn.addEventListener('click',countDownTimer);
     if(i<=myQuestions.length)
     {
       
-      sectionEl.innerHTML= (myQuestions[i].question);
-      
-      
+      questionEl.innerHTML= (myQuestions[i].question);
       i++;
     }
     

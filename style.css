@@ -1,7 +1,17 @@
-h2,p,button
+h2,p
 {
     text-align: center;
 }
+#startButton, #answer1, #answer2 ,#answer3 ,#answer4 {
+    background-color: purple; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+  }
 
 #mySection
 {
