@@ -4,11 +4,9 @@ h2,p
 }
 #startButton, #answer1, #answer2 ,#answer3 ,#answer4 {
     background-color: purple; 
-    border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 15px 22px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     font-size: 14px;
   }
