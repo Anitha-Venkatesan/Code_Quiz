@@ -9,11 +9,12 @@ var answer3Btn=document.getElementById('answer3');
 var answer4Btn= document.getElementById('answer4');
 
 
-
+startBtn.addEventListener('click',countDownTimer);
+var timerCount =0; 
 function countDownTimer()
 {
  readQuestions();
- var timerCount =75; 
+ timerCount =75; 
  var Readtimer=setInterval(startTimer,1000);
     function startTimer()
     {
@@ -36,7 +37,6 @@ function countDownTimer()
     }
 } 
 
-startBtn.addEventListener('click',countDownTimer);
 
  function readQuestions()
     {
@@ -114,6 +114,8 @@ startBtn.addEventListener('click',countDownTimer);
           else{
             answer.addEventListener('click',function()
             {
+              timerCount -=10;
+              timerEl.textContent = "Time:" +timerCount;
               answerDiv.innerHTML="Wrong";
               sectionEl.appendChild(answerDiv);
             });
@@ -121,6 +123,8 @@ startBtn.addEventListener('click',countDownTimer);
         }   
      
       i++;
+      console.log(myQuestions[i]);
+      
     }
     
   }
