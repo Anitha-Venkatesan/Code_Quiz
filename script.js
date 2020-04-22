@@ -63,80 +63,71 @@ startBtn.addEventListener('click',countDownTimer);
        var myQuestions = [
         {
           question: "What is the syntax for creating a function in JavaScript named as Geekfunc?",
-          answers: {
-            1 : "function = Geekfunc()",
-            2 : "function Geekfunc()",
-            3 : "function := Geekfunc()",
-            4 : "function : Geekfunc()"},
+          answers: [
+            "function = Geekfunc()",
+            "function Geekfunc()",
+           "function := Geekfunc()",
+            "function : Geekfunc()"],
           correctAnswer: "2"
         },
         {
           question: "What is the JavaScript syntax for printing values in Console?",
-          answers: {
-            1 : "print(5)",
-            2 : "console.print(5);",
-            3 : "console.log(5);",
-            4 : "print.console(5);"},
+          answers: [
+            "print(5)",
+            "console.print(5);",
+            "console.log(5);",
+            "print.console(5);"],
           correctAnswer: "3"
         },
         {
           question: "Which built-in method reverses the order of the elements of an array?",
-          answers: {
-            1 : "reverse()",
-            2 : "changeOrder(order)",
-            3 : "sort(order)",
-            4 : "None of the above."}, 
+          answers: [
+            "reverse()",
+            "changeOrder(order)",
+            "sort(order)",
+            "None of the above."], 
           correctAnswer: "1"
         },
         {
           question: "What does HTML stand for?",
-          answers: {
-              1 : "Hyper Time Markup Language",
-              2 : "Hyperlinks and Text Markup Language",
-              3 : "Home Tool Markup Language",
-              4 : "Hyper Text Markup Language"}, 
+          answers: [
+              "Hyper Time Markup Language",
+              "Hyperlinks and Text Markup Language",
+              "Home Tool Markup Language",
+              "Hyper Text Markup Language"], 
           correctAnswer: "4"
         },
         {
           question: "Which character is used to indicate an end tag?",
-          answers: {
-              1 : "/",
-              2 : "<",
-              3 : ">",
-              4 : "*"}, 
+          answers: [
+              "/",
+              "<",
+              ">",
+              "*"], 
           correctAnswer: "1"
         },
         ];
     
     var i=0;
     //console.log(myQuestions.length);
+    var answerButton=[];
     
     if(i<myQuestions.length)
     {
       questionEl.innerHTML= (myQuestions[i].question);
-      var allChoicesArr=Object.entries(myQuestions[i].answers);
-     
-      //console.log(allChoicesArr.concat(allAnswersArr));
-      //console.log(allChoicesArr);
+      var allChoicesArr=(myQuestions[i].answers);
       for(var j=0;j< allChoicesArr.length ;j++)
       {
-        for(var k = 0; k < allChoicesArr[j].length; k++) { 
-          
-          var answerButton = allChoicesArr[j].concat(allChoicesArr[k]); 
-          
-          
-          
-      } console.log(answerButton);}
+          answerButton = allChoicesArr[j];
+          var answer = document.getElementById('answer' + (j + 1));
+          answer.innerHTML = (j + 1) + '. ' + answerButton;
+       
+      } 
+      
       
      
       
-         /* answer1Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);
-          j++;k++;
-          answer2Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);
-          j++;k++;
-          answer3Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);
-          j++;k++;
-          answer4Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);*/
+         
         
       
       
