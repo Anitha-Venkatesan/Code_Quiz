@@ -108,30 +108,38 @@ startBtn.addEventListener('click',countDownTimer);
         },
         ];
     
-    var i=0;var j=0;var k=0;
-    console.log(myQuestions.length);
+    var i=0;
+    //console.log(myQuestions.length);
     
     if(i<myQuestions.length)
     {
       questionEl.innerHTML= (myQuestions[i].question);
-      var allChoicesArr=Object.keys(myQuestions[i].answers);
-      var allAnswersArr =Object.values(myQuestions[i].answers);
-      console.log(allChoicesArr.concat(allAnswersArr));
-      console.log(allAnswersArr);
-      if(j< allChoicesArr.length && k<allAnswersArr.length)
+      var allChoicesArr=Object.entries(myQuestions[i].answers);
+     
+      //console.log(allChoicesArr.concat(allAnswersArr));
+      //console.log(allChoicesArr);
+      for(var j=0;j< allChoicesArr.length ;j++)
       {
-          answer1Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);
+        for(var k = 0; k < allChoicesArr[j].length; k++) { 
+          
+          var answerButton = allChoicesArr[j].concat(allChoicesArr[k]); 
+          
+          
+          
+      } console.log(answerButton);}
+      
+     
+      
+         /* answer1Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);
           j++;k++;
           answer2Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);
           j++;k++;
           answer3Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);
           j++;k++;
-          answer4Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);
+          answer4Btn.innerHTML=allChoicesArr[j].concat(allAnswersArr[k]);*/
         
-      }
       
       
-  
       i++;
     }
     
