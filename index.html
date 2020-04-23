@@ -29,27 +29,35 @@
         </nav>
     
         
-            <section class="container border border-transparent mb-5">
+            <div class="container border border-transparent mb-5">
                   <div class="row" id="myDiv">
                     <div class="col-sm-12 col-md-12" >
                         <h2>Code Quiz Challenge</h2>
-                        <p>Try to answer the following questions within the time limit.Keep in mind that incorrect answers will penalize your screentime by ten seconds</p>  
+                        <p><ul>
+                          <li><strong>Total Questions : 5</strong></li>
+                          <li><strong>Total Time : 75 Seconds</strong></li>
+                          <li><strong>Each questions carries 5 marks</strong></li>
+                          <li><strong>Keep in mind that incorrect answers will penalize your screentime by 10 seconds</strong></li>
+                          <li><strong>Try to answer the following questions within the time limit.</strong></li>
+                          <li><strong>All the best</strong></li>
+                        </ul></p>  
                       
                          <button id="startButton" type="button">Start</button>
                     </div>
                   </div>
-            </section>
+                </div>
             <section class="container border border-transparent mb-5" id ="mySection">
               <div id="question"> </div>
               
                 <button id="answer1"></button><br>
                 <button id="answer2"></button><br>
                 <button id="answer3"></button><br>
-                <button id="answer4"></button><br>
-
-             
+                <button id="answer4"></button><br><hr>
               
             </section>
+            <div>
+              <p id ="score">Your Final Score :</p>
+            </div>
            <script src="script.js" ></script>
            
     </body>     
