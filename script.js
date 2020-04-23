@@ -2,6 +2,8 @@ var startBtn = document.getElementById('startButton');
 var timerEl =document.getElementById('timer');
 var divEl = document.getElementById('myDiv');
 var sectionEl =document.getElementById('mySection');
+var scoreEl =document.getElementById('scoreDiv');
+var finalScore =document.getElementById('score');
 var questionEl=document.getElementById('question');
 var answer1Btn=document.getElementById('answer1');
 var answer2Btn= document.getElementById('answer2');
@@ -26,6 +28,7 @@ answer4Btn.addEventListener('click',function() {
 var questionIndex=0;
 var timerCount=0; 
 var allChoicesArr;
+scoreEl.style.display="none";
 
 //Timer function to start the timer
 function countDownTimer()
@@ -39,13 +42,10 @@ function countDownTimer()
         if(timerCount >= 0){
           timerCount--;
           timerEl.textContent = "Time:" +timerCount;
-          if(sectionEl.style.display==="none"){
-           
-            
+          if(sectionEl.style.display==="none" ){
             divEl.style.display="block";
             sectionEl.style.display="none";
           }
-          
           else{
             sectionEl.style.display="block";
             divEl.style.display="none";
@@ -118,20 +118,15 @@ var myQuestions = [
           var answer = document.getElementById('answer' + (j + 1));
           
           answer.innerHTML = (j + 1) + '. ' + answerButton;
-          
-          
       }
     }
-    function checkAnswer(btnIndex)
+ function checkAnswer(btnIndex)
     {
       if(myQuestions[questionIndex].correctAnswer === btnIndex)
       {
           answerDiv.style.display="block";
           answerDiv.innerHTML="Correct!";
           sectionEl.appendChild(answerDiv);
-          var score =0;
-          score = score+5;
-          
       }
       else
       {
@@ -139,22 +134,26 @@ var myQuestions = [
            timerEl.textContent = "Time:" +timerCount;
            answerDiv.style.display="block";
            answerDiv.innerHTML="Wrong!";
-           sectionEl.appendChild(answerDiv);
-           
+           sectionEl.appendChild(answerDiv);  
       }
       setTimeout(function(){ 
-        
         questionIndex++;
         answerDiv.style.display="none";
         readQuestions();}, 1000);
-        
     }
-    function result()
+  function score()
+  {
+    var score =0;
+    if(answerDiv.innerHTML==="Correct")
     {
-      var score =0;
-
+      score+= 5;
+      console.log(score);
 
     }
+    
+
+  }
+    
     
     
   
