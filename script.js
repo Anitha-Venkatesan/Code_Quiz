@@ -27,8 +27,11 @@ answer4Btn.addEventListener('click',function() {
 
 var questionIndex=0;
 var timerCount=0; 
+var score=0;
 var allChoicesArr;
+divEl.style.display="block";
 scoreEl.style.display="none";
+sectionEl.style.display="none";
 
 //Timer function to start the timer
 function countDownTimer()
@@ -36,6 +39,7 @@ function countDownTimer()
  
  readQuestions();
  timerCount =75; 
+ 
  var Readtimer=setInterval(startTimer,1000);
     function startTimer()
     {
@@ -43,13 +47,10 @@ function countDownTimer()
           timerCount--;
           timerEl.textContent = "Time:" +timerCount;
           if(sectionEl.style.display==="none" ){
-            divEl.style.display="block";
-            sectionEl.style.display="none";
-          }
-          else{
             sectionEl.style.display="block";
-            divEl.style.display="none";
+            divEl.style.display="none"; 
           }
+        
         }
         if (timerCount == 0) {
           timerEl.textContent = "Time:0" +0;
@@ -127,7 +128,13 @@ var myQuestions = [
           answerDiv.style.display="block";
           answerDiv.innerHTML="Correct!";
           sectionEl.appendChild(answerDiv);
-      }
+          score += 5;
+          var totalScore=score;
+         finalScore.innerHTML= totalScore;
+        
+      
+          
+      }    
       else
       {
            timerCount -=10;
@@ -139,20 +146,20 @@ var myQuestions = [
       setTimeout(function(){ 
         questionIndex++;
         answerDiv.style.display="none";
-        readQuestions();}, 1000);
-    }
-  function score()
-  {
-    var score =0;
-    if(answerDiv.innerHTML==="Correct")
-    {
-      score+= 5;
-      console.log(score);
+        if(questionIndex == 5)
+        {
+            
+            scoreEl.style.display="block";
+            sectionEl.style.display="none" ;
 
-    }
+            return;
+        }
+        readQuestions();
+        }, 750);
     
-
-  }
+    }
+   
+    
     
     
     
