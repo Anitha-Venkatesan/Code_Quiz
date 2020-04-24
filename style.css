@@ -2,7 +2,7 @@ h2,p
 {
     text-align: center;
 }
-#startButton, #answer1, #answer2 ,#answer3 ,#answer4 {
+#startButton, #answer1, #answer2 ,#answer3 ,#answer4 ,#initials ,#goBack, #clearHighScore{
     background-color: purple; 
     color: white;
     padding: 15px 22px;
@@ -11,11 +11,3 @@ h2,p
     font-size: 14px;
   }
 
-#mySection
-{
-    display: none;
-}
-#myDiv
-{
-    display: block;
-}

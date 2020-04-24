@@ -14,23 +14,16 @@
     
     </head>
     <body>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light mb-5">
-            View Highscore</a>
-            
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-              <ul class="nav navbar-nav navbar-right"> 
-                    <li class="nav-item" id ="timer">Time:75</li>
-                </ul>
+        <nav class="navbar navbar-light bg-light mb-5" id="navitem">
+            <a>View Highscore</a>        
+            <div class="justify-content-end" id="navbarSupportedContent">             
+                    <span id ="timer">Time:75</span>
             </div>
         </nav>
     
         
-            <div class="container border border-transparent mb-5">
-                  <div class="row" id="myDiv">
+            <div class="container border border-transparent mb-5" id="startDiv">
+                  <div class="row">
                     <div class="col-sm-12 col-md-12" >
                         <h2>Code Quiz Challenge</h2>
                         <p><ul>
@@ -57,8 +50,16 @@
             </section>
             <div class ="container border border-transparent mb-5" id="scoreDiv">
               <h3>All done !</h3>
-                <p id ="score" style="text-align:left"><strong>Your Final Score : </strong></p>
-                <label for="name"><strong> Your Initials: </strong></label><input name="name" id="name" /> <button type="submit">Submit</button>
+                <p style="text-align:left"><strong>Your Final Score :</strong><span id="score"></span></p>
+                <label for="initialInput"><strong> Your Initials: </strong></label>
+                <input type="text" id="initialInput" /> <button type="submit" id="initials">Submit</button>
+            </div>
+            <div class ="container border border-transparent mb-5" id="resultDiv">
+              <h3>Highscores</h3>
+              <input type="text" id="getInput" /> 
+              <button type="submit" id="goBack">Go Back</button>
+              <button type="submit" id="clearHighScore">Clear Highscore</button>
+              
             </div>
            <script src="script.js" ></script>
            
