@@ -181,7 +181,6 @@ function readQuestions()
            sectionEl.style.display="none";
            resultEl.style.display="block";
            timerEl.textContent = "";
-           getInput.value=localStorage.getItem("name",document.getElementById('initialInput').value);
            
           
            });  
