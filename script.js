@@ -11,9 +11,10 @@ var timerEl =document.getElementById('timer');
 var startdivEl = document.getElementById('startDiv');
 var sectionEl =document.getElementById('mySection');
 var scoreEl =document.getElementById('scoreDiv');
+var initials=document.getElementById('initialInput');
 var resultEl=document.getElementById('resultDiv');
 var finalScore =document.getElementById('score');
-var getInput=document.getElementById('getInput');
+var getHighScore=document.getElementById('getInput');
 var questionEl=document.getElementById('question');
 
 
@@ -35,7 +36,7 @@ resultEl.style.display="none";
 
 startBtn.addEventListener('click',countDownTimer);
 answer1Btn.addEventListener('click', function() {
-  checkAnswer(0);
+  checkAnswer(0); 
 });
 answer2Btn.addEventListener('click',function() {
 checkAnswer(1);
@@ -52,7 +53,7 @@ var readTimer;
 //Timer function to start the timer
 function countDownTimer()
 {
-  
+  questionIndex=0;
   sectionEl.style.display="block";
   startdivEl.style.display="none";
  readQuestions();
@@ -126,6 +127,7 @@ var myQuestions = [
 
 function readQuestions()
     {
+
       var answerButton=[];
       questionEl.innerHTML= (myQuestions[questionIndex].question);
       allChoicesArr=(myQuestions[questionIndex].answers);
@@ -149,7 +151,12 @@ function readQuestions()
       }    
       else
       {
+
            timerCount -=10;
+           if(timerCount<0)
+           {
+             timerCount=0;
+           }
            timerEl.textContent = "Time:" +timerCount;
            answerDiv.style.display="block";
            answerDiv.innerHTML="Wrong!";
@@ -176,7 +183,8 @@ function readQuestions()
     }
     initialBtn.addEventListener('click',function ()
            {
-           localStorage.setItem("name", document.getElementById('initialInput').value);
+            
+           localStorage.setItem(document.getElementById('initialInput').value,score);
            scoreEl.style.display="none";
            sectionEl.style.display="none";
            resultEl.style.display="block";
@@ -184,6 +192,8 @@ function readQuestions()
            
           
            });  
+
+    getHighScore.innerHTML =localStorage.getItem(document.getElementById('initialInput').value);
     goBack.addEventListener('click',function(){
       startdivEl.style.display="block";
       scoreEl.style.display="none";
@@ -191,6 +201,7 @@ function readQuestions()
       sectionEl.style.display="none";
       navItem.style.display="flex";
       timerEl.textContent = "Time:75";
+      document.getElementById('initialInput').value="";
     });
     clearHighScore.addEventListener('click',function(){
       timerEl.textContent = "";
