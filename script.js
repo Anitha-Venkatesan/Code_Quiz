@@ -189,11 +189,38 @@ function readQuestions()
            sectionEl.style.display="none";
            resultEl.style.display="block";
            timerEl.textContent = "";
+           console.log("Length" +localStorage.length);
+           var results = [];
+           var enteredScore=[];
+           for(var z=0;z<localStorage.length;z++)
+           {
+               
+            var keyValue=parseInt(localStorage.getItem(localStorage.key(z)));
+            results.push({
+              key: localStorage.key(z),
+              score: keyValue
+            });
+            enteredScore.push(keyValue);
+           }
+          //console.log(results);
+          //console.log(enteredScore);
+          var maxScore =Math.max(...enteredScore);
+          for(var z=0;z<results.length;z++)
+          {
+            var displayMaxScore=[];
+            if(results[z].score == maxScore)
+            {
+              //console.log(results[z].key);
+              displayMaxScore = results[z].key
+
+            }
+          }
            
           
            });  
+        
 
-    getHighScore.innerHTML =localStorage.getItem(document.getElementById('initialInput').value);
+    
     goBack.addEventListener('click',function(){
       startdivEl.style.display="block";
       scoreEl.style.display="none";
