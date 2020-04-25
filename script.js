@@ -143,6 +143,11 @@ function readQuestions()
     }
  function checkAnswer(btnIndex)
     {
+      answer1Btn.disabled = true;
+      answer2Btn.disabled = true;
+      answer3Btn.disabled = true;
+      answer4Btn.disabled = true;
+
       if(myQuestions[questionIndex].correctAnswer === btnIndex)
       {
           answerDiv.style.display="block";
@@ -166,6 +171,10 @@ function readQuestions()
       finalScore.innerHTML= score; 
 
       var setTimer = setTimeout(function(){ 
+        answer1Btn.disabled = false;
+        answer2Btn.disabled = false;
+        answer3Btn.disabled = false;
+        answer4Btn.disabled = false;
         questionIndex++;
         answerDiv.style.display="none";
         if(questionIndex === myQuestions.length)
@@ -212,6 +221,7 @@ function readQuestions()
       scoreEl.style.display="none";
       sectionEl.style.display="none";
       resultEl.style.display="block";
+      navItem.style.display="none";
     });
 
     function calculateHighScore()
