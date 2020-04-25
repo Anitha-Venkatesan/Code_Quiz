@@ -247,7 +247,8 @@ function readQuestions()
            }
           //console.log(results);
           //console.log(enteredScore);
-          var maxScore =Math.max(...enteredScore);
+          var maxScore =enteredScore.sort(function(a, b){return b-a});
+          maxScore= maxScore[0];
           for(var z=0;z<results.length;z++)
           {
             if(results[z].score == maxScore)
