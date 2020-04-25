@@ -11,8 +11,8 @@ An Online quiz application that shows the highscores
 * Bootstrap
 
 ### Installation
-* `git clone git@github.com:Anitha-Venkatesan/Code_Quiz.git
-* `cd Code_Quiz
+* `git clone git@github.com:Anitha-Venkatesan/Code_Quiz.git`
+* `cd Code_Quiz`
 * Open index.html in browser
 
 ### URL
