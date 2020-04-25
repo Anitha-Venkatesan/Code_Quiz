@@ -17,16 +17,11 @@ var resultEl=document.getElementById('resultDiv');
 var finalScore =document.getElementById('score');
 var getHighScore=document.getElementById('getInput');
 var questionEl=document.getElementById('question');
-
-
 var answerDiv = document.createElement("div");
-//EventListener for click events
 
-
-
-
-var questionIndex=0;
+var readTimer;
 var timerCount=0; 
+var questionIndex=0;
 var score=0;
 var scorePage;
 var allChoicesArr;
@@ -35,22 +30,6 @@ scoreEl.style.display="none";
 sectionEl.style.display="none";
 resultEl.style.display="none";
 
-startBtn.addEventListener('click',countDownTimer);
-answer1Btn.addEventListener('click', function() {
-  checkAnswer(0); 
-});
-answer2Btn.addEventListener('click',function() {
-checkAnswer(1);
-});
-answer3Btn.addEventListener('click',function() {
- checkAnswer(2);
-});
-answer4Btn.addEventListener('click',function() {
- checkAnswer(3);
-});
-
-
-var readTimer;
 //Timer function to start the timer
 function countDownTimer()
 {
@@ -125,7 +104,7 @@ var myQuestions = [
     correctAnswer: 0
   },
   ];
-
+//function to read quesions and answers
 function readQuestions()
     {
 
@@ -135,19 +114,18 @@ function readQuestions()
       for(var j=0;j< allChoicesArr.length ;j++)
       {
           answerButton = allChoicesArr[j];
-          console.log(answerButton);
           var answer = document.getElementById('answer' + (j + 1));
           
           answer.innerHTML = (j + 1) + '. ' + answerButton;
       }
     }
+//function to check answers
  function checkAnswer(btnIndex)
     {
       answer1Btn.disabled = true;
       answer2Btn.disabled = true;
       answer3Btn.disabled = true;
       answer4Btn.disabled = true;
-
       if(myQuestions[questionIndex].correctAnswer === btnIndex)
       {
           answerDiv.style.display="block";
@@ -157,9 +135,8 @@ function readQuestions()
       }    
       else
       {
-
-           timerCount -=10;
-           if(timerCount<0)
+          timerCount -=10;
+          if(timerCount<0)
            {
              timerCount=0;
            }
@@ -180,7 +157,7 @@ function readQuestions()
         if(questionIndex === myQuestions.length)
         {
               clearInterval(readTimer);
-              navItem.style.display="none";
+              //navItem.style.display="none";
               sectionEl.style.display="none";
               clearTimeout(setTimer);
               scoreEl.style.display="block";
@@ -191,47 +168,14 @@ function readQuestions()
       }, 750);    
            
     }
-    initialBtn.addEventListener('click',function ()
-           {
-            calculateHighScore();
-           });  
-
-    goBack.addEventListener('click',function(){
-      startdivEl.style.display="block";
-      scoreEl.style.display="none";
-      resultEl.style.display="none";
-      sectionEl.style.display="none";
-      navItem.style.display="flex";
-      timerEl.textContent = "Time:75";
-      document.getElementById('initialInput').value="";
-      score=0;
-    });
-    clearHighScore.addEventListener('click',function(){
-      timerEl.textContent = "";
-      localStorage.clear();
-      getHighScore.innerHTML="";
-      scoreEl.style.display="none";
-      sectionEl.style.display="none";
-    });
-
-    viewHighScore.addEventListener('click',function(){
-      calculateHighScore();
-      clearInterval(readTimer); 
-      startdivEl.style.display="none";
-      scoreEl.style.display="none";
-      sectionEl.style.display="none";
-      resultEl.style.display="block";
-      navItem.style.display="none";
-    });
-
+//function to calculate highscore
     function calculateHighScore()
     {
       localStorage.setItem(document.getElementById('initialInput').value,score);
            scoreEl.style.display="none";
            sectionEl.style.display="none";
            resultEl.style.display="block";
-           timerEl.textContent = "";
-           console.log("Length" +localStorage.length);
+           navItem.style.display="none";
            var results = [];
            var enteredScore=[];
            var displayMaxScore=[];
@@ -245,8 +189,6 @@ function readQuestions()
             });
             enteredScore.push(keyValue);
            }
-          //console.log(results);
-          //console.log(enteredScore);
           var maxScore =enteredScore.sort(function(a, b){return b-a});
           maxScore= maxScore[0];
           for(var z=0;z<results.length;z++)
@@ -256,9 +198,55 @@ function readQuestions()
               displayMaxScore.push(results[z].key);
             }
           }
-          getHighScore.innerHTML = displayMaxScore.join() + ":" + maxScore;
+
+          var displayName= displayMaxScore.join() + ":" + maxScore;
+          getHighScore.innerHTML =displayName.toUpperCase();
+          
     }
       
+//EventListener for click events
+startBtn.addEventListener('click',countDownTimer);
+answer1Btn.addEventListener('click', function() {
+       checkAnswer(0); 
+     });
+answer2Btn.addEventListener('click',function() {
+      checkAnswer(1);
+    });
+answer3Btn.addEventListener('click',function() {
+      checkAnswer(2);
+    });
+answer4Btn.addEventListener('click',function() {
+      checkAnswer(3);
+     });
+initialBtn.addEventListener('click',function (){
+      calculateHighScore();
+     });  
+
+goBack.addEventListener('click',function(){
+      startdivEl.style.display="block";
+      scoreEl.style.display="none";
+      resultEl.style.display="none";
+      sectionEl.style.display="none";
+      navItem.style.display="flex";
+      timerEl.textContent = "Time:75";
+      document.getElementById('initialInput').value="";
+      score=0;
+    });
+clearHighScore.addEventListener('click',function(){
+      localStorage.clear();
+      getHighScore.innerHTML="";
+      scoreEl.style.display="none";
+      sectionEl.style.display="none";
+    });
+viewHighScore.addEventListener('click',function(){
+      calculateHighScore();
+      clearInterval(readTimer); 
+      startdivEl.style.display="none";
+      scoreEl.style.display="none";
+      sectionEl.style.display="none";
+      resultEl.style.display="block";
+      navItem.style.display="none";
+    });
              
               
       
