@@ -7,6 +7,7 @@ var answer2Btn= document.getElementById('answer2');
 var answer3Btn=document.getElementById('answer3');
 var answer4Btn= document.getElementById('answer4');
 var navItem=document.getElementById('navitem');
+var viewHighScore=document.getElementById('viewHighScore');
 var timerEl =document.getElementById('timer');
 var startdivEl = document.getElementById('startDiv');
 var sectionEl =document.getElementById('mySection');
@@ -183,8 +184,39 @@ function readQuestions()
     }
     initialBtn.addEventListener('click',function ()
            {
-            
-           localStorage.setItem(document.getElementById('initialInput').value,score);
+            calculateHighScore();
+           });  
+
+    goBack.addEventListener('click',function(){
+      startdivEl.style.display="block";
+      scoreEl.style.display="none";
+      resultEl.style.display="none";
+      sectionEl.style.display="none";
+      navItem.style.display="flex";
+      timerEl.textContent = "Time:75";
+      document.getElementById('initialInput').value="";
+      score=0;
+    });
+    clearHighScore.addEventListener('click',function(){
+      timerEl.textContent = "";
+      localStorage.clear();
+      getHighScore.innerHTML="";
+      scoreEl.style.display="none";
+      sectionEl.style.display="none";
+    });
+
+    viewHighScore.addEventListener('click',function(){
+      calculateHighScore();
+      clearInterval(readTimer); 
+      startdivEl.style.display="none";
+      scoreEl.style.display="none";
+      sectionEl.style.display="none";
+      resultEl.style.display="block";
+    });
+
+    function calculateHighScore()
+    {
+      localStorage.setItem(document.getElementById('initialInput').value,score);
            scoreEl.style.display="none";
            sectionEl.style.display="none";
            resultEl.style.display="block";
@@ -192,6 +224,7 @@ function readQuestions()
            console.log("Length" +localStorage.length);
            var results = [];
            var enteredScore=[];
+           var displayMaxScore=[];
            for(var z=0;z<localStorage.length;z++)
            {
                
@@ -207,38 +240,13 @@ function readQuestions()
           var maxScore =Math.max(...enteredScore);
           for(var z=0;z<results.length;z++)
           {
-            var displayMaxScore=[];
             if(results[z].score == maxScore)
-            {
-              //console.log(results[z].key);
-              displayMaxScore = results[z].key
-
+            { 
+              displayMaxScore.push(results[z].key);
             }
           }
-           
-          
-           });  
-        
-
-    
-    goBack.addEventListener('click',function(){
-      startdivEl.style.display="block";
-      scoreEl.style.display="none";
-      resultEl.style.display="none";
-      sectionEl.style.display="none";
-      navItem.style.display="flex";
-      timerEl.textContent = "Time:75";
-      document.getElementById('initialInput').value="";
-    });
-    clearHighScore.addEventListener('click',function(){
-      timerEl.textContent = "";
-      getInput.value ="";
-      scoreEl.style.display="none";
-      sectionEl.style.display="none";
-      
-
-      
-    });
+          getHighScore.innerHTML = displayMaxScore.join() + ":" + maxScore;
+    }
       
              
               
