@@ -4,6 +4,16 @@ Homework4- Code Quiz
 ### Objective
 An Online quiz application that shows the highscores
 
+### Description
+
+* When I use the website, it will show the instruction for the quiz.
+* When I start the quiz,then a timer starts and it presented with a question
+* When I answer a question, It will display the correct or wrong answer.
+* If it is correct ,then it is going to another question.
+* If it is incorrect answer, then 10 seconds is subtracted from the clock, and then presenting another question
+* After answering all questions or the timer reaches 0 , the game is over, then I can save my intials .
+* Then saving my initials and score in local storage ,to view for highscores
+
 ### Technologies Used
 * Javascript
 * HTML
